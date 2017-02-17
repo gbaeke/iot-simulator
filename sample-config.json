@@ -1,0 +1,9 @@
+{
+    "Interval":5,
+    "IoTHubs":["gebahub.azure-devices.net","gebahub2.azure-devices.net"],
+    "SasTokens":["SharedAccessSignature sr=...",
+                 "SharedAccessSignature sr=..."],
+    "DevGroups":[
+        {"Prefix":"deva","DeviceNum":50,"Firmware":"1.0","IoTHub": 0},
+        {"Prefix":"devb","DeviceNum":50,"Firmware":"1.1","IoTHub": 1}]
+}
