@@ -1,12 +1,19 @@
 package main
 
-import "flag"
-import "fmt"
-import "os"
-import "runtime"
+import (
+	"flag"
+	"fmt"
+	"net/http"
+	"os"
+	"runtime"
+	"time"
+)
 
 // define a flag -r to remove all devices
 var removeDevices = flag.Bool("r", false, "Remove devices from IoT Hub")
+
+// http client
+var client *http.Client
 
 func main() {
 	// logical processors for goroutines
@@ -15,6 +22,11 @@ func main() {
 	// create a channel to allow goroutines to communicate
 	// in this case goroutines will communicate with main() which is also a goroutine
 	ch := make(chan string)
+
+	// http client
+	client = &http.Client{
+		Timeout: time.Second * 10,
+	}
 
 	// parse flags
 	flag.Parse()

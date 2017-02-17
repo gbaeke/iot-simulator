@@ -77,9 +77,6 @@ func (d device) deviceSend(interval int, ch chan<- string) {
 }
 
 func (d device) createDevice() (*http.Response, error) {
-	client := &http.Client{
-		Timeout: time.Second * 10,
-	}
 
 	reqBody, _ := json.Marshal(devicebody{DeviceID: d.Name})
 
@@ -98,9 +95,6 @@ func (d device) createDevice() (*http.Response, error) {
 // get device in IoT Hub
 // return 200 if device is found, 404 if not
 func (d device) getDevice() (*http.Response, error) {
-	client := &http.Client{
-		Timeout: time.Second * 10,
-	}
 
 	req, _ := http.NewRequest("GET", "https://"+Conf.IoTHubs[d.IoTHub]+"/devices/"+d.Name+"?api-version=2016-02-03", nil)
 
@@ -115,9 +109,6 @@ func (d device) getDevice() (*http.Response, error) {
 }
 
 func (d device) sendData(message devicemessage) (*http.Response, error) {
-	client := &http.Client{
-		Timeout: time.Second * 10,
-	}
 
 	reqBody, _ := json.Marshal(message)
 
@@ -135,9 +126,6 @@ func (d device) sendData(message devicemessage) (*http.Response, error) {
 }
 
 func (d device) deleteDevice() (*http.Response, error) {
-	client := &http.Client{
-		Timeout: time.Second * 10,
-	}
 
 	//fmt.Println("https://" + Conf.IoTHubs[d.IoTHub] + "/devices/" + d.Name + "?api-version=2016-11-14")
 
