@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"math/rand"
 	"net/http"
 	"strconv"
 	"time"
@@ -21,7 +22,8 @@ type devicebody struct {
 }
 
 type devicemessage struct {
-	Message string
+	Temperature float64
+	Humidity    float64
 }
 
 // Function getDeviceList returns pointer to slice of device structs
@@ -60,7 +62,9 @@ func (d device) deviceSend(interval int, ch chan<- string) {
 		ch <- fmt.Sprintf("Could not get device %s. Error %v", d.Name, err)
 	}
 
-	message := devicemessage{Message: "test message"}
+	temperature := rand.Float64() * 40
+	humidity := rand.Float64() * 40
+	message := devicemessage{Temperature: temperature, Humidity: humidity}
 
 	for {
 		_, err := d.sendData(message)
