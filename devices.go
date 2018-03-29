@@ -62,11 +62,11 @@ func (d device) deviceSend(interval int, ch chan<- string) {
 		ch <- fmt.Sprintf("Could not get device %s. Error %v", d.Name, err)
 	}
 
-	temperature := rand.Float64() * 40
-	humidity := rand.Float64() * 40
-	message := devicemessage{Temperature: temperature, Humidity: humidity}
-
 	for {
+		temperature := 20.0 + rand.Float64()*10
+		humidity := 40.0 + rand.Float64()*10
+		message := devicemessage{Temperature: temperature, Humidity: humidity}
+
 		_, err := d.sendData(message)
 		if err == nil {
 			ch <- fmt.Sprintf("Sent message from %s", d.Name)
