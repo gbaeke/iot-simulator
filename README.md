@@ -1,7 +1,7 @@
 # iot-simulator
 IoT Simulator in Go
 
-Make a file called  config.json and use the sample-config.json as a sample
+Make a file called config.json and use the sample-config.json as a sample
 
 `{
     "Interval":5,
