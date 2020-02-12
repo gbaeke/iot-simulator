@@ -119,7 +119,7 @@ func (d device) sendData(message devicemessage) (*http.Response, error) {
 	req, _ := http.NewRequest("POST", "https://"+Conf.IoTHubs[d.IoTHub]+"/devices/"+d.Name+"/messages/events?api-version=2016-02-03", bytes.NewBuffer(reqBody))
 
 	// add headers
-	req.Header.Add("Content-Type", "application/json")
+	req.Header.Add("Content-Type", "application/json; charset=utf-8")
 	req.Header.Add("Authorization", Conf.SasTokens[d.IoTHub])
 
 	// do the request
