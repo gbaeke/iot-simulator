@@ -13,6 +13,6 @@ jobs:
        uses: goreleaser/goreleaser-action@v1
        with:
         version: latest
-        args: release --release-notes=/tmp/release.txt
+        args: release
        env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
